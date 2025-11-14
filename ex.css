@@ -1,0 +1,573 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #eef4ff;
+  --foreground: #1a1d29;
+  --card: #ffffff;
+  --card-foreground: #1a1d29;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --accent: #0ea5e9;
+  --accent-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #1a1d29;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  --sky-background: #f0f9ff;
+  --sky-surface: rgba(240, 249, 255, 0.9);
+  --sky-border: rgba(14, 165, 233, 0.28);
+  --sky-text: #0c4a6e;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --success: #10b981;
+  --success-foreground: #ffffff;
+  --warning: #f59e0b;
+  --warning-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.08);
+  --input: rgba(0, 0, 0, 0.08);
+  --ring: #3b82f6;
+  --popover: #ffffff;
+  --popover-foreground: #1a1d29;
+  --radius: 1rem;
+  --game-blue: #3b82f6;
+  --game-green: #10b981;
+  --game-purple: #8b5cf6;
+  --game-orange: #f97316;
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1a1d29;
+  --sidebar-primary: #3b82f6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #0ea5e9;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(0, 0, 0, 0.08);
+  --sidebar-ring: #3b82f6;
+  --g1-card: #6caeff;
+  --g2-card: #e7d9c3;
+  --g3-card: #e56f5e;
+  --ink: #0a0a0a;
+  --paper-tint: 0.08;
+  --swan-deep-navy: #0a2540;
+  --swan-indigo: #1e3a8a;
+  --swan-sky-accent: #3b82f6;
+  --swan-ink-black: #0a0a0a;
+  --swan-light: #e0f2fe;
+  --swan-white: #f8fafc;
+  --swan-gray: #cbd5e1;
+  --swan-ripple: rgba(8, 145, 178, 0.2);
+  --prisoner-beige: #e7dfd3;
+  --prisoner-gray-beige: #d6d3ce;
+  --prisoner-brick: #8b5e3c;
+  --prisoner-ink-black: #0a0a0a;
+  --prisoner-light: #fafaf9;
+  --prisoner-accent: #a8a29e;
+  --signal-coral: #db6b5e;
+  --signal-sand-beige: #e9c3b0;
+  --signal-midnight-blue: #184e77;
+  --signal-subdued-teal: #266d7e;
+  --signal-ink-black: #0a0a0a;
+  --g1-bg-image: none;
+  --g2-bg-image: none;
+  --g3-bg-image: none;
+  --g1-focus: #3b82f6;
+  --g2-focus: #8b5e3c;
+  --g3-focus: #22d3ee;
+
+  /* Updated newspaper design tokens - unified card background to #EDEDE9 */
+  --news-ink: #1e1e1b;
+  --news-paper: #edede9;
+  --news-hair: #c9c2b0;
+  --news-accent: #3b82f6;
+  --news-shadow-press: 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
+  /* Game-specific newspaper themes */
+  --g1-news-bg-start: #1a2947;
+  --g1-news-bg-end: #2b4b8a;
+  --g1-news-accent: #3b82f6;
+  --g1-news-ink: #0a2540;
+
+  --g2-news-bg: #f5f1e6;
+  --g2-news-accent: #8b5e3c;
+  --g2-news-ink: #44403c;
+
+  --g3-news-bg-start: #ffb4a2;
+  --g3-news-bg-end: #f5f1e6;
+  --g3-news-accent: #db6b5e;
+  --g3-news-ink: #184e77;
+
+  /* Unified newspaper theme tokens - all cards use #EDEDE9 */
+  --hair: #c9c2b0;
+
+  /* 새로운 색상 변수 정의 - 뉴스프린트 톤 */
+  --page-bg: #F7F1E9; /* 전체 페이지 배경 */
+  --game-card-bg: #FFFDF8; /* 카드 내부 배경 */
+  --game-halo-bg: #E2F4EE; /* 공통 하이라이트 원 */
+  
+  /* 카드 디자인 토큰 */
+  --card-radius: 1rem; /* 16px */
+  --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  --card-shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.12);
+  --card-border-width: 1px;
+  --card-padding: 2rem; /* 32px */
+  --card-padding-sm: 1.5rem; /* 24px */
+
+  /* BlackSwan (gray newsprint) */
+  --bs-canvas-top: #f0f1f3;
+  --bs-canvas-bot: #e6e7e9;
+  --bs-paper: #edede9;
+  --bs-ink: #0f2233;
+  --bs-accent: #244961;
+
+  /* SignalDecoding (standard newsprint) */
+  --sd-canvas-grad-top: #f3d2c7;
+  --sd-canvas-grad-bot: #f5f1e6;
+  --sd-paper: #edede9;
+  --sd-ink: #184e77;
+  --sd-accent: #db6b5e;
+
+  /* PrisonersDilemma (recycled pulp paper) */
+  --pd-canvas: #e7d9c3;
+  --pd-paper: #edede9;
+  --pd-ink: #4a3b2e;
+  --pd-accent: #8b5e3c;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  /* Updated font variables to use Noto Serif KR for headlines, Pretendard for body, Spoqa Han Sans Neo for meta */
+  --font-sans: "Pretendard Variable", "Inter", system-ui, -apple-system, "Noto Sans KR", sans-serif;
+  --font-serif: "Fraunces", "Merriweather", Georgia, serif;
+  --font-title: "Noto Serif KR", Georgia, serif;
+  --font-mono: "IBM Plex Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --font-news-headline: "Noto Serif KR", "Source Serif 4", Georgia, serif;
+  --font-news-body: "Pretendard Variable", "Pretendard", sans-serif;
+  --font-news-meta: "Spoqa Han Sans Neo", "IBM Plex Mono", monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    /* texture.png를 메인 배경으로 */
+    background-image: url("/bg/texture.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
+  }
+  /* 노이즈 텍스쳐: 투명도와 블러 조정으로 더 자연스럽게 */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    filter: blur(0.3px);
+  }
+  /* 원형 하이라이트는 유지 (카드 영역 강조) */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 90vw;
+    height: 65vh;
+    max-width: 1400px;
+    max-height: 900px;
+    transform: translate(-50%, -45%);
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 50% 45%,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.2) 40%,
+      rgba(255, 255, 255, 0) 70%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+  body > * {
+    position: relative;
+    z-index: 1;
+  }
+  h1,
+  h2,
+  .headline {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  h1 {
+    font-weight: 700;
+    font-size: clamp(28px, 3.6vw, 44px);
+  }
+  h2 {
+    font-weight: 600;
+    font-size: clamp(22px, 2.6vw, 30px);
+  }
+  .korean-heading {
+    font-family: var(--font-title);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .korean-text {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+  
+  /* 히어로 뒤쪽 반투명 박스 없애기 */
+  section.container .grid > div:first-child > div.relative > span {
+    background-color: transparent !important;
+    filter: none !important;
+    display: none;
+  }
+  
+  /* 게임 카드 표면/테두리/그림자 통일 */
+  .game-card {
+    /* background-color는 인라인 스타일(game.solidBgColor) 사용 */
+    border-width: var(--card-border-width) !important;
+    border-style: solid !important;
+    border-radius: var(--card-radius) !important;
+    /* border-color는 인라인 스타일(game.color) 사용 */
+    box-shadow: var(--card-shadow) !important;
+    padding: var(--card-padding-sm) !important;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  @media (min-width: 768px) {
+    .game-card {
+      padding: var(--card-padding) !important;
+    }
+  }
+  
+  .game-card:hover {
+    box-shadow: var(--card-shadow-hover) !important;
+  }
+  
+  .game-card h3 {
+    font-family: var(--font-title);
+    font-weight: 600;
+  }
+  .game-card p {
+    font-family: var(--font-sans);
+  }
+  
+  /* 공룡 뒤의 하이라이트 원 통일 */
+  .game-card .aspect-4\/3 > .absolute.rounded-full.opacity-12 {
+    background-color: var(--game-halo-bg) !important;
+    opacity: 1 !important;
+  }
+  
+  /* NEW 배지 배경색 조정 */
+  .game-card span.absolute {
+    background-color: var(--game-card-bg) !important;
+  }
+  
+  /* Archive 링크 색상 상속 */
+  .game-card a[aria-label*="archive"],
+  .game-card a[href$="archive"] {
+    color: inherit !important;
+  }
+  
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+}
+
+@layer utilities {
+  .section-elevate {
+    backdrop-filter: blur(2px);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
+  }
+  .text-on-primary {
+    color: var(--primary-foreground);
+  }
+  .text-on-accent {
+    color: var(--accent-foreground);
+  }
+  .text-on-secondary {
+    color: var(--secondary-foreground);
+  }
+  .text-on-destructive {
+    color: var(--destructive-foreground);
+  }
+  .text-on-success {
+    color: var(--success-foreground);
+  }
+  .sky-card {
+    background: var(--sky-surface);
+    border: 1px solid var(--sky-border);
+    border-radius: var(--radius);
+  }
+  .sky-gradient-bg {
+    background: linear-gradient(135deg, var(--sky-background) 0%, #e0f2fe 100%);
+  }
+  .sky-icon {
+    color: var(--sky-text);
+  }
+  .btn-primary {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  .btn-primary:hover {
+    filter: brightness(1.1);
+  }
+  .btn-primary:active {
+    filter: brightness(0.95);
+  }
+  .swan-bg {
+    background: linear-gradient(135deg, var(--swan-light) 0%, #bae6fd 100%);
+  }
+  .swan-card {
+    background: var(--swan-white);
+    border: 1px solid var(--swan-sky-accent);
+  }
+  .prisoner-bg {
+    background: linear-gradient(135deg, var(--prisoner-light) 0%, #f5f5f4 100%);
+  }
+  .prisoner-card {
+    background: var(--prisoner-light);
+    border: 1px solid var(--prisoner-accent);
+  }
+  .signal-bg {
+    background: linear-gradient(135deg, var(--signal-light) 0%, #ffedd5 100%);
+  }
+  .signal-card {
+    background: var(--signal-light);
+    border: 1px solid var(--signal-accent);
+  }
+  .woodcut-texture {
+    position: relative;
+  }
+  .woodcut-texture::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05' /%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.08;
+  }
+  .theme-card {
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  .theme-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  .g1-bg {
+    background: linear-gradient(135deg, var(--g1-bg-start) 0%, var(--g1-bg-mid) 50%, var(--g1-bg-end) 100%);
+    background-image: var(--g1-bg-image),
+      linear-gradient(135deg, var(--g1-bg-start) 0%, var(--g1-bg-mid) 50%, var(--g1-bg-end) 100%);
+  }
+  .g2-bg {
+    background: linear-gradient(90deg, var(--g2-bg-start) 0%, var(--g2-bg-end) 100%);
+    background-image: var(--g2-bg-image), linear-gradient(90deg, var(--g2-bg-start) 0%, var(--g2-bg-end) 100%);
+  }
+  .g3-bg {
+    background: linear-gradient(135deg, var(--g3-bg-start) 0%, var(--g3-bg-end) 100%);
+    background-image: var(--g3-bg-image), linear-gradient(135deg, var(--g3-bg-start) 0%, var(--g3-bg-end) 100%);
+  }
+  .bg-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .bg-overlay > * {
+    position: relative;
+    z-index: 2;
+  }
+  /* Newspaper-style utility classes */
+  .news-paper {
+    background-color: var(--news-paper);
+    color: var(--news-ink);
+  }
+
+  .news-rule {
+    border-color: var(--news-hair);
+    border-width: 1px;
+  }
+
+  .news-hairline {
+    height: 1px;
+    background-color: var(--news-hair);
+  }
+
+  .letterpress {
+    box-shadow: var(--news-shadow-press);
+  }
+
+  .choice-card {
+    transition: all 120ms ease-out;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  }
+
+  .choice-card:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
+  }
+
+  .choice-card:active {
+    transform: translateY(0);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .newspaper-focus:focus-visible {
+    outline: 2px dotted currentColor;
+    outline-offset: 4px;
+  }
+
+  /* Game-specific newspaper backgrounds */
+  .g1-newspaper-bg {
+    background: linear-gradient(135deg, var(--g1-news-bg-start) 0%, var(--g1-news-bg-end) 100%);
+    position: relative;
+  }
+
+  .g1-newspaper-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,50 Q25,45 50,50 T100,50' stroke='rgba(255,255,255,0.03)' fill='none' stroke-width='0.5'/%3E%3Cpath d='M0,55 Q25,50 50,55 T100,55' stroke='rgba(255,255,255,0.03)' fill='none' stroke-width='0.5'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .g2-newspaper-bg {
+    background-color: var(--g2-news-bg);
+    position: relative;
+  }
+
+  .g2-newspaper-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.015) 2px,
+      rgba(0, 0, 0, 0.015) 3px
+    );
+    pointer-events: none;
+  }
+
+  .g3-newspaper-bg {
+    background: linear-gradient(135deg, var(--g3-news-bg-start) 0%, var(--g3-news-bg-end) 100%);
+    position: relative;
+  }
+
+  .g3-newspaper-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 80px,
+      rgba(0, 0, 0, 0.02) 80px,
+      rgba(0, 0, 0, 0.02) 81px
+    );
+    pointer-events: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

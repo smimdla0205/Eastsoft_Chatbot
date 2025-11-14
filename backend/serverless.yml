@@ -1,0 +1,56 @@
+service: g2-chatbot-backend
+
+provider:
+  name: aws
+  runtime: python3.11
+  region: ap-northeast-2
+  stage: dev
+  environment:
+    BIGKINDS_API_KEY: ${env:BIGKINDS_API_KEY}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - logs:CreateLogGroup
+        - logs:CreateLogStream
+        - logs:PutLogEvents
+        - bedrock:InvokeModel
+      Resource: "*"
+
+functions:
+  enhanced-chatbot:
+    handler: lambda/enhanced-chatbot-handler.lambda_handler
+    timeout: 60
+    memorySize: 1024
+    description: "RAG 기반 Enhanced Claude 챗봇 - BigKinds API 통합"
+    events:
+      - http:
+          path: /chat
+          method: post
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: false
+      - http:
+          path: /chat
+          method: options
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: false
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: false

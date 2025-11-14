@@ -1,0 +1,15 @@
+{
+  "name": "g2-chatbot-backend",
+  "version": "1.0.0",
+  "description": "AI Chatbot Backend for G2 Clone",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "deploy:lambda": "./deploy-lambda.sh",
+    "remove": "serverless remove",
+    "logs": "serverless logs -f chatbot -t"
+  },
+  "devDependencies": {
+    "serverless": "^3.38.0",
+    "serverless-python-requirements": "^6.0.0"
+  }
+}
