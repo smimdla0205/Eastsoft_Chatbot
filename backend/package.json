@@ -1,15 +1,18 @@
 {
-  "name": "g2-chatbot-backend",
+  "name": "vectordb-qa-chatbot-lambda",
   "version": "1.0.0",
-  "description": "AI Chatbot Backend for G2 Clone",
+  "description": "AWS Lambda Backend - Vector DB Q&A Chatbot",
+  "type": "module",
   "scripts": {
     "deploy": "serverless deploy",
-    "deploy:lambda": "./deploy-lambda.sh",
+    "deploy:prod": "serverless deploy --stage prod",
     "remove": "serverless remove",
-    "logs": "serverless logs -f chatbot -t"
+    "logs": "serverless logs -f chat -t",
+    "logs:prod": "serverless logs -f chat -t --stage prod"
   },
   "devDependencies": {
     "serverless": "^3.38.0",
-    "serverless-python-requirements": "^6.0.0"
+    "serverless-python-requirements": "^6.0.0",
+    "serverless-plugin-tracing": "^2.2.0"
   }
 }

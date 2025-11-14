@@ -100,10 +100,33 @@ Thumbs.db
 # AWS and deployment
 .aws/
 *.pem
+aws-credentials.json
 
 # Backend deployment artifacts
 backend/enhanced-chatbot.zip
 backend/.serverless/
+backend/.env
+backend/node_modules/
+backend/lambda/__pycache__/
+backend/lambda/boto3/
+backend/lambda/botocore/
+backend/lambda/*.dist-info/
+backend/lambda/bin/
+backend/lambda/certifi/
+backend/lambda/charset_normalizer/
+backend/lambda/dateutil/
+backend/lambda/idna/
+backend/lambda/jmespath/
+backend/lambda/requests/
+backend/lambda/s3transfer/
+backend/lambda/urllib3/
+backend/lambda/six.py
+backend/lambda/test-*.py
+
+# AWS Lambda layer
+backend/python/
+backend/.venv/
+backend/venv/
 
 # Local development
 .vercel
